@@ -1,2 +1,3 @@
 # Project exclude paths
 /index.js
+/node_modules/
