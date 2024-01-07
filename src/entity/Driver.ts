@@ -24,10 +24,8 @@ export class Driver {
   rating: number
 
   @OneToMany(() => Ride, ride => ride.driver)
-  @JoinColumn()
-  rides: Ride[]
+  rides: Ride[];
 
-  @JoinColumn()
-  car: number
-
+  @ManyToOne(() => Car)
+  car: number;
 }

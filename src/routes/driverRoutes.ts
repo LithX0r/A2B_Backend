@@ -1,4 +1,4 @@
-import {Router} from "express";
+import { Router} from "express";
 import {AppDataSource} from "../data-source";
 import {Driver} from "../entity/Driver";
 
@@ -47,7 +47,7 @@ driverRoutes.get("/", async function (req, res) {
 
 driverRoutes.post("/", async function (req, res) {
     try {
-        const { firstName, lastName, age, homeTownID, rating, rides, car } = req.body;
+        const { firstName, lastName, age, homeTownID, rating, carID, rides } = req.body;
 
         const newDriver = new Driver();
         newDriver.firstName = firstName;
@@ -55,8 +55,8 @@ driverRoutes.post("/", async function (req, res) {
         newDriver.age = age;
         newDriver.homeTownID = homeTownID;
         newDriver.rating = rating;
+        newDriver.car = carID;
         newDriver.rides = rides;
-        newDriver.car = car;
 
         const driverRepository = AppDataSource.getRepository(Driver);
         const savedDriver = await driverRepository.save(newDriver);
@@ -79,8 +79,8 @@ driverRoutes.delete("/:driverId", async function (req, res) {
         const driver = await driverRepository.findOneBy({id: driverId});
 
         if (driver != null) {
-            await driverRepository.delete(driver);
-            res.status(200).json({message: `Driver with id ${driverId} deleted`});
+            await driverRepository.remove(driver);
+            res.status(200).json({message: `Driver ${driver.firstName} ${driver.lastName} with id ${driverId} deleted`});
         } else {
             res.status(404).json({message: `Driver with id not found`});
         }
