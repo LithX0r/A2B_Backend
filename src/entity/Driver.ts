@@ -27,8 +27,7 @@ export class Driver {
   @JoinColumn()
   rides: Ride[]
 
-  @ManyToOne(() => Car)
   @JoinColumn()
-  car: Relation<Car>
+  car: number
 
 }
