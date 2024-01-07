@@ -15,6 +15,8 @@ AppDataSource.initialize().then(async () => {
     console.log("Datasource has been initialized.");
 }).catch(error => console.log(error))
 
+app.use(express.json());
+
 app.use("/api/rider", riderRoutes);
 app.use("/api/car", carRoutes);
 app.use("/api/driver", driverRoutes);

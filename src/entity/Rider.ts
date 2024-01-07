@@ -20,9 +20,6 @@ export class Rider {
     homeTownID: number
 
     @Column()
-    nPreviousRides: number
-
-    @Column()
     rating: number
 
     @OneToMany(() => Ride, ride => ride.riders)
