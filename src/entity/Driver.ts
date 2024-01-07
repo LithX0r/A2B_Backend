@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Relation} from "typeorm";
 import {Car} from "./Car";
 
 @Entity()
@@ -27,6 +27,6 @@ export class Driver {
 
   @OneToOne(() => Car)
   @JoinColumn()
-  car: Car
+  car: Relation<Car>
 
 }
