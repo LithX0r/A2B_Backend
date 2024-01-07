@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Relation} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Relation, ManyToOne, OneToMany} from "typeorm"
 import { Driver } from "./Driver"
 import { Rider } from "./Rider"
 
@@ -8,11 +8,11 @@ export class Ride {
   @PrimaryGeneratedColumn()
   id: number
 
-  @OneToOne(() => Driver)
+  @ManyToOne(() => Driver)
   @JoinColumn()
   driver: Relation<Driver>
 
-  @OneToOne(() => Rider)
+  @OneToMany(() => Rider, rider => rider.rides)
   @JoinColumn()
   riders: Relation<Rider[]>
 
