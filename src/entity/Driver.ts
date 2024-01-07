@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Relation, ManyToOne, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, JoinColumn, Relation, ManyToOne, OneToMany} from "typeorm";
 import {Car} from "./Car";
 import {Ride} from "./Ride";
 
@@ -21,11 +21,14 @@ export class Driver {
   homeTownID: number
 
   @Column()
+  nPreviousRides: number
+
+  @Column()
   rating: number
 
   @OneToMany(() => Ride, ride => ride.driver)
   @JoinColumn()
-  rides: Ride[]
+  rides: Relation<Ride[]>
 
   @ManyToOne(() => Car)
   @JoinColumn()
