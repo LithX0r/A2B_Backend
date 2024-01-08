@@ -77,8 +77,8 @@ carRoutes.post("/addToDriver/:driverId", async function (req, res){
 		const car = new Car();
 		setCarValues(car, req.body);
 		await carRepository.save(car);
+		driver.carId = car.id;
 
-		// driver.car = car;
 		await AppDataSource.manager.save(Driver, driver);
 		res.sendStatus(201);
 	} catch (exception) {
@@ -114,13 +114,14 @@ carRoutes.delete("/:carId", async function (req, res){
 		if (isNaN(carId)) {
 			res.sendStatus(400);
 		}
+
+		await AppDataSource.manager.update(Driver, {carId: carId}, {carId: null});
 		await carRepository.delete({id: carId})
-		// const driverRepository = await AppDataSource.getRepository(Driver);
-		// await driverRepository.update({car: {id: carId}}, {car: null});
-		await AppDataSource.manager.update(Driver, {car: {id: carId}}, {carId: null});
+
 		res.sendStatus(204);
 	} catch (exception) {
 		res.sendStatus(500);
+		console.log(exception);
 	}
 });
 
