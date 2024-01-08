@@ -1,4 +1,4 @@
-interface RiderType {
+export interface RiderType {
     id: number;
     firstName: string;
     lastName: string;
@@ -8,18 +8,17 @@ interface RiderType {
     rating: number;
 }
 
-interface DriverType {
+export interface DriverType {
     id: number;
     firstName: string;
     lastName: string;
     age: number;
     homeTownID: number;
-    nPreviousRides: number;
     rating: number;
-    car: CarType;
+    carId: number;
 }
 
-interface RideType {
+export interface RideType {
     id: number;
     driver: DriverType;
     riders: RiderType[];
@@ -28,9 +27,10 @@ interface RideType {
     departureTime: Date;
     arrivalTime: Date;
     price: number;
+    isFinished: boolean;
 }
 
-interface CarType {
+export interface CarType {
     id: number;
     make: string;
     model: string;
@@ -38,3 +38,4 @@ interface CarType {
     color: string;
     nSeats: number;
 }
+

@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Relation, ManyToOne, OneToMany} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, JoinColumn, Relation, ManyToOne, OneToMany} from "typeorm"
 import { Driver } from "./Driver"
 import { Rider } from "./Rider"
 
@@ -16,18 +16,21 @@ export class Ride {
   @JoinColumn()
   riders: Relation<Rider[]>
 
-  @Column()
+  @Column("varchar")
   origin: string
 
-  @Column()
+  @Column("varchar")
   destination: string
 
-  @Column()
+  @Column("date")
   departureTime: Date
 
-  @Column()
+  @Column("date")
   arrivalTime: Date
 
   @Column()
   price: number
+
+  @Column()
+  isFinished: boolean
 }

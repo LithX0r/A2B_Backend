@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Relation, ManyToOne, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany} from "typeorm";
 import {Car} from "./Car";
 import {Ride} from "./Ride";
 
@@ -27,5 +27,5 @@ export class Driver {
   rides: Ride[];
 
   @ManyToOne(() => Car)
-  car: number;
+  carId: number;
 }

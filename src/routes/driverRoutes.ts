@@ -55,7 +55,7 @@ driverRoutes.post("/", async function (req, res) {
         newDriver.age = age;
         newDriver.homeTownID = homeTownID;
         newDriver.rating = rating;
-        newDriver.car = carID;
+        newDriver.carId = carID;
         newDriver.rides = rides;
 
         const driverRepository = AppDataSource.getRepository(Driver);
