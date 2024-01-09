@@ -3,6 +3,7 @@ import {DriverType, RiderType, RideType} from "../DataTypes";
 import {AppDataSource} from "../data-source";
 import {Ride} from "../entity/Ride";
 import {Driver} from "../entity/Driver";
+import {Rider} from "../entity/Rider";
 
 
 const rideRoutes = Router();
@@ -28,7 +29,7 @@ rideRoutes.get("/driver/:driverId", async function (req, res) {
       return;
     }
 
-    const rides: RideType[] = await rideRepository.findBy({driver: {driverId: driverId}});
+    const rides: RideType[] = await rideRepository.findBy({driver: {id: driverId}});
     if (rides.length === 0) {
       res.sendStatus(404);
       return;
@@ -139,26 +140,26 @@ rideRoutes.patch("/:rideId", async function (req, res){
 });
 
 // TODO: complete delete
-// rideRoutes.delete("/:rideId", async function (req, res){
-//   const rideId: number = Number(req.params.rideId);
-//   if(isNaN(rideId)) {
-//     res.sendStatus(400);
-//     return;
-//   }
-//
-//   const ride: RideType = rideRepository.findOneBy({id: rideId});
-//   const driver: DriverType = AppDataSource.manager.findOneBy(Driver, {id: ride.driver.id});
-//   const riders: RiderType[] = [];
-//
-// });
+rideRoutes.delete("/:rideId", async function (req, res){
+  const rideId: number = Number(req.params.rideId);
+  if(isNaN(rideId)) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const ride: RideType = await rideRepository.findOneBy({id: rideId});
+  const driver: DriverType = await AppDataSource.manager.findOneBy(Driver, {id: ride.driver.id});
+  const riders: RiderType[] = [];
+
+});
 
 function setRideValues(ride: Ride, rideData: RideType) {
   ride.driver = rideData.driver;
   ride.riders = rideData.riders;
   ride.origin = rideData.origin;
   ride.destination = rideData.destination;
-  ride.departureTime = Date(rideDate.departureTime);
-  ride.arrivalTime = Date(rideDate.arrivalTime);
+  ride.departureTime = new Date(rideData.departureTime);
+  ride.arrivalTime = new Date(rideData.arrivalTime);
   ride.price = rideData.price;
   ride.isFinished = rideData.isFinished;
 }

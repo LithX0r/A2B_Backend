@@ -4,7 +4,6 @@ export interface RiderType {
     lastName: string;
     age: number;
     homeTownID: number;
-    nPreviousRides: number;
     rating: number;
     rides: RideType[];
 }
