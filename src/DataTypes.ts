@@ -6,6 +6,7 @@ export interface RiderType {
     homeTownID: number;
     nPreviousRides: number;
     rating: number;
+    rides: RideType[];
 }
 
 export interface DriverType {
@@ -15,6 +16,7 @@ export interface DriverType {
     age: number;
     homeTownID: number;
     rating: number;
+    rides: RideType[];
     carId: number;
 }
 

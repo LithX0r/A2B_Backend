@@ -5,7 +5,7 @@ import express = require("express");
 import riderRoutes from "./routes/riderRoutes";
 import carRoutes from "./routes/carRoutes";
 import driverRoutes from "./routes/driverRoutes";
-import ridesRoutes from "./routes/ridesRoutes";
+import rideRoutes from "./routes/rideRoutes";
 
 const app: Express = express();
 const port = 3000;
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use("/api/rider", riderRoutes);
 app.use("/api/car", carRoutes);
 app.use("/api/driver", driverRoutes);
-app.use("/api/rides", ridesRoutes);
+app.use("/api/rides", rideRoutes);
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Express + TypeScript Server");
