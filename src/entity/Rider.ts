@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, ManyToMany} from "typeorm"
 import {Ride} from "./Ride";
 
 @Entity()
@@ -22,6 +22,6 @@ export class Rider {
     @Column()
     rating: number
 
-    @OneToMany(() => Ride, ride => ride.riders)
+    @ManyToMany(() => Ride, (ride) => ride.riders)
     rides: Ride[]
 }

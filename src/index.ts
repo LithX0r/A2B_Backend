@@ -1,5 +1,4 @@
 import { AppDataSource } from "./data-source"
-import { Rider } from "./entity/Rider"
 import { Express, Request, Response } from "express";
 import express = require("express");
 import riderRoutes from "./routes/riderRoutes";
@@ -20,7 +19,7 @@ app.use(express.json());
 app.use("/api/rider", riderRoutes);
 app.use("/api/car", carRoutes);
 app.use("/api/driver", driverRoutes);
-app.use("/api/rides", rideRoutes);
+app.use("/api/ride", rideRoutes);
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Express + TypeScript Server");

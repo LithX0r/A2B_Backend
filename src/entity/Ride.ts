@@ -1,4 +1,12 @@
-import {Entity, PrimaryGeneratedColumn, Column, JoinColumn, Relation, ManyToOne, OneToMany} from "typeorm"
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Relation,
+  ManyToOne,
+  ManyToMany,
+  JoinTable
+} from "typeorm"
 import { Driver } from "./Driver"
 import { Rider } from "./Rider"
 
@@ -8,13 +16,12 @@ export class Ride {
   @PrimaryGeneratedColumn()
   id: number
 
-  @ManyToOne(() => Driver)
-  @JoinColumn()
+  @ManyToOne(() => Driver, (driver) => driver.rides, {onDelete: "SET NULL"})
   driver: Relation<Driver>
 
-  @OneToMany(() => Rider, rider => rider.rides)
-  @JoinColumn()
-  riders: Relation<Rider[]>
+  @ManyToMany(() => Rider, rider => rider.rides)
+  @JoinTable()
+  riders: Rider[]
 
   @Column("varchar")
   origin: string
