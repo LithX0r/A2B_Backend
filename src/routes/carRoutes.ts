@@ -121,7 +121,6 @@ carRoutes.delete("/:carId", async function (req, res){
 		res.sendStatus(204);
 	} catch (exception) {
 		res.sendStatus(500);
-		console.log(exception);
 	}
 });
 

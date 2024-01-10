@@ -21,6 +21,7 @@
    },
    "homepage": "https://github.com/LithX0r/A2B_Backend#readme",
    "dependencies": {
+      "cors": "^2.8.5",
       "dotenv": "^16.3.1",
       "express": "^4.18.2",
       "reflect-metadata": "^0.1.13",
