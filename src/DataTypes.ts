@@ -6,6 +6,9 @@ export interface RiderType {
     homeTownID: number;
     rating: number;
     rides: RideType[];
+    kmDriven: number;
+    co2Saved: number;
+    numberOfRides: number;
 }
 
 export interface DriverType {
@@ -17,6 +20,9 @@ export interface DriverType {
     rating: number;
     rides: RideType[];
     carId: number;
+    kmDriven: number;
+    co2Saved: number;
+    numberOfRides: number;
 }
 
 export interface RideType {

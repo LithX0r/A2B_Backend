@@ -58,7 +58,7 @@ riderRoutes.get("/", async function (req, res) {
 
 riderRoutes.post("/", async function (req, res) {
   try {
-    const {firstName, lastName, age, homeTownID, rating, rides} = req.body;
+    const {firstName, lastName, age, homeTownID, rating, rides, kmDriven, co2Saved, numberOfRides} = req.body;
 
     const newRider = new Rider();
     newRider.firstName = firstName;
@@ -68,6 +68,9 @@ riderRoutes.post("/", async function (req, res) {
     newRider.rating = rating;
     newRider.rides = [];
     newRider.rides.push(rides);
+    newRider.kmDriven = kmDriven;
+    newRider.co2Saved = co2Saved;
+    newRider.numberOfRides = numberOfRides;
 
     const riderRepository = AppDataSource.getRepository(Rider);
     const savedRider = await riderRepository.save(newRider);

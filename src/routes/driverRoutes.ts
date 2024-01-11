@@ -70,7 +70,7 @@ driverRoutes.get("/", async function (req, res) {
 
 driverRoutes.post("/", async function (req, res) {
   try {
-    const {firstName, lastName, age, homeTownID, rating, carID, rides} = req.body;
+    const {firstName, lastName, age, homeTownID, rating, carID, rides, kmDriven, co2Saved, numberOfRides} = req.body;
 
     const newDriver = new Driver();
     newDriver.firstName = firstName;
@@ -80,6 +80,9 @@ driverRoutes.post("/", async function (req, res) {
     newDriver.rating = rating;
     newDriver.carId = carID;
     newDriver.rides = rides;
+    newDriver.kmDriven = kmDriven;
+    newDriver.co2Saved = co2Saved;
+    newDriver.numberOfRides = numberOfRides;
 
     const driverRepository = AppDataSource.getRepository(Driver);
     const savedDriver = await driverRepository.save(newDriver);

@@ -6,6 +6,7 @@ import carRoutes from "./routes/carRoutes";
 import driverRoutes from "./routes/driverRoutes";
 import rideRoutes from "./routes/rideRoutes";
 import {Driver} from "./entity/Driver";
+import {Car} from "./entity/Car";
 
 const app: Express = express();
 const port = 3000;
@@ -16,13 +17,26 @@ AppDataSource.initialize().then(async () => {
     console.log("Datasource has been initialized.");
     const testDriver = new Driver();
     testDriver.id = 1;
-    testDriver.firstName = "Max";
-    testDriver.lastName = "Mustermann";
+    testDriver.firstName = 'Max';
+    testDriver.lastName = 'Mustermann';
     testDriver.age = 20;
     testDriver.homeTownID = 1;
     testDriver.rating = 3.6;
     testDriver.rides = [];
+    testDriver.kmDriven = 1000;
+    testDriver.co2Saved = 100;
+    testDriver.numberOfRides = 10;
+
+    const testCar = new Car();
+    testCar.id = 1;
+    testCar.make = 'Tesla';
+    testCar.model = 'Model X';
+    testCar.year = 2021;
+    testCar.nSeats = 4;
+    testCar.color = 'black';
+    testDriver.carId = testCar.id;
     AppDataSource.manager.save(Driver, testDriver);
+    AppDataSource.manager.save(Car, testCar);
 
 }).catch(error => console.log(error))
 

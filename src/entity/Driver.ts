@@ -28,4 +28,13 @@ export class Driver {
 
   @ManyToOne(() => Car)
   carId: number;
+
+  @Column()
+  kmDriven: number;
+
+  @Column()
+  co2Saved: number;
+
+  @Column()
+  numberOfRides: number;
 }

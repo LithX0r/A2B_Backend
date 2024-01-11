@@ -24,4 +24,13 @@ export class Rider {
 
     @ManyToMany(() => Ride, (ride) => ride.riders)
     rides: Ride[]
+
+    @Column()
+    kmDriven: number
+
+    @Column()
+    co2Saved: number
+
+    @Column()
+    numberOfRides: number
 }
