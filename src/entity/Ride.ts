@@ -29,10 +29,10 @@ export class Ride {
   @Column("varchar")
   destination: string
 
-  @Column("date")
+  @Column("varchar")
   departureTime: Date
 
-  @Column("date")
+  @Column("varchar")
   arrivalTime: Date
 
   @Column()

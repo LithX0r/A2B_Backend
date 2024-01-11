@@ -22,7 +22,10 @@ driverRoutes.get("/:driverId", async function (req, res) {
             id: driverId
           },
         relations: {
-          rides: true
+          rides: {
+            driver: true,
+            riders: true
+          }
         },
         take: 1
 

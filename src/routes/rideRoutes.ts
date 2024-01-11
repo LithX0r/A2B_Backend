@@ -5,7 +5,6 @@ import {Ride} from "../entity/Ride";
 import {Driver} from "../entity/Driver";
 import {Rider} from "../entity/Rider";
 
-
 const rideRoutes = Router();
 const rideRepository = AppDataSource.getRepository(Ride);
 rideRoutes.get("/", async function (req, res) {
@@ -131,7 +130,7 @@ rideRoutes.post("/:driverId", async function (req, res){
       return;
     }
     ride.driver = driver;
-    console.log(driver);
+    // console.log(driver);
     // driver.rides.push(ride);
     setRideValues(ride, req.body);
 
