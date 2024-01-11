@@ -48,7 +48,6 @@ carRoutes.get("/:carId", async function (req, res){
 	}
 });
 
-// Maybe not needed
 carRoutes.post("/", async function (req, res) {
 	try {
 		const car: Car = new Car();

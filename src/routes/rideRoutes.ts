@@ -130,8 +130,6 @@ rideRoutes.post("/:driverId", async function (req, res){
       return;
     }
     ride.driver = driver;
-    // console.log(driver);
-    // driver.rides.push(ride);
     setRideValues(ride, req.body);
 
 
@@ -139,7 +137,6 @@ rideRoutes.post("/:driverId", async function (req, res){
     await rideRepository.save(ride);
     res.sendStatus(201);
   } catch (exception) {
-    console.log(exception)
     res.sendStatus(500);
   }
 });
@@ -173,7 +170,6 @@ rideRoutes.patch("/:rideId/addRider/:riderId", async function (req, res){
       take: 1
   }))[0];
     if (ride === undefined || rider === undefined) {
-      console.log(rider);
       res.sendStatus(404);
       return;
     }
@@ -254,7 +250,6 @@ rideRoutes.delete("/:rideId", async function (req, res){
     res.sendStatus(204);
   } catch (exception) {
     res.sendStatus(500);
-    console.log(exception);
   }
 
 });
